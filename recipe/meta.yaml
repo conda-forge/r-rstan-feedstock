@@ -15,7 +15,8 @@ source:
   sha256: e3cbb96f7809ace95d61a119142d74d71f015ca1af4a78aad591f2b6b056cd81
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -23,6 +24,12 @@ build:
 
 requirements:
   build:
+    - posix                # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('cxx') }}        # [unix]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+  host:
     - r-base
     - r-bh >=1.62
     - r-rcpp >=0.12.0
@@ -31,9 +38,6 @@ requirements:
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
   run:
     - r-base
     - r-bh >=1.62
@@ -43,7 +47,6 @@ requirements:
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
-    - libgcc  # [not win]
 
 test:
   commands:
