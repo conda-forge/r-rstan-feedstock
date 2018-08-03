@@ -14,14 +14,16 @@ Summary: User-facing R functions are provided to parse, compile, test,  estimate
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-rstan-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-rstan-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-rstan-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-rstan-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-rstan-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-rstan-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-rstan-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-rstan-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-rstan-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-rstan-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-rstan-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-rstan-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-rstan/badges/version.svg)](https://anaconda.org/conda-forge/r-rstan)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-rstan/badges/downloads.svg)](https://anaconda.org/conda-forge/r-rstan)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--rstan-green.svg)](https://anaconda.org/conda-forge/r-rstan) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-rstan.svg)](https://anaconda.org/conda-forge/r-rstan) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-rstan.svg)](https://anaconda.org/conda-forge/r-rstan) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-rstan.svg)](https://anaconda.org/conda-forge/r-rstan) |
 
 Installing r-rstan
 ==================
