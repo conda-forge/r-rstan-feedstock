@@ -1,5 +1,4 @@
-{% set version = "2.17.3" %}
-
+{% set version = '2.17.3' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,13 +9,13 @@ package:
 source:
   fn: rstan_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/rstan_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/rstan/rstan_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/rstan_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/rstan/rstan_{{ version }}.tar.gz
   sha256: e3cbb96f7809ace95d61a119142d74d71f015ca1af4a78aad591f2b6b056cd81
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 2
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -24,49 +23,59 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-    - r-bh >=1.62
+    - r-bh >=1.65
     - r-rcpp >=0.12.0
-    - r-rcppeigen
-    - r-stanheaders >=2.15.0
+    - r-rcppeigen >=0.3.3.3.0
+    - r-stanheaders >=2.17.2
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
   run:
     - r-base
-    - r-bh >=1.62
+    - {{native}}gcc-libs         # [win]
+    - r-bh >=1.65
     - r-rcpp >=0.12.0
-    - r-rcppeigen
-    - r-stanheaders >=2.15.0
+    - r-rcppeigen >=0.3.3.3.0
+    - r-stanheaders >=2.17.2
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
 
 test:
   commands:
-    - $R -e "library('rstan')"  # [not win]
+    - $R -e "library('rstan')"           # [not win]
     - "\"%R%\" -e \"library('rstan')\""  # [win]
 
 about:
-  home: https://groups.google.com/forum/#!forum/stan-users, http://mc-stan.org
+  home: http://discourse.mc-stan.org, http://mc-stan.org
   license: GPL (>= 3)
-  summary: User-facing R functions are provided to parse, compile, test,  estimate, and analyze
-    Stan models by accessing the header-only Stan library  provided by the 'StanHeaders'
+  summary: User-facing R functions are provided to parse, compile, test, estimate, and analyze
+    Stan models by accessing the header-only Stan library provided by the 'StanHeaders'
     package. The Stan project develops a probabilistic programming language that implements
-    full Bayesian statistical  inference via Markov Chain Monte Carlo, rough Bayesian
+    full Bayesian statistical inference via Markov Chain Monte Carlo, rough Bayesian
     inference via 'variational' approximation, and (optionally penalized) maximum likelihood
-    estimation via  optimization. In all three cases, automatic differentiation is used
-    to quickly  and accurately evaluate gradients without burdening the user with the
-    need  to derive the partial derivatives.
+    estimation via optimization. In all three cases, automatic differentiation is used
+    to quickly and accurately evaluate gradients without burdening the user with the
+    need to derive the partial derivatives.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
