@@ -39,6 +39,8 @@ requirements:
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
+    - r-loo
+    - r-pkgbuild
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
@@ -49,6 +51,8 @@ requirements:
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
+    - r-loo
+    - r-pkgbuild
 
 test:
   commands:
