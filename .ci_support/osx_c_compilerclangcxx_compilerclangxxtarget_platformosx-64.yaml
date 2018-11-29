@@ -4,6 +4,8 @@ build_number_decrement:
 - '0'
 c_compiler:
 - clang
+c_compiler_version:
+- 7.3.0
 channel_sources:
 - conda-forge/label/gcc7,defaults
 channel_targets:
@@ -12,6 +14,8 @@ cran_mirror:
 - https://cran.r-project.org
 cxx_compiler:
 - clangxx
+cxx_compiler_version:
+- 7.3.0
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
