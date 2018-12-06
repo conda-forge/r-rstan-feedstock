@@ -1,5 +1,5 @@
 #!/bin/bash
-if [[ $target_platform =~ win*]]; then
+if [[ $target_platform == win-64 ]]; then
   mkdir -p ~/R
   echo -e "CXX14=vs2015" > ~/R/.makevars
 fi
