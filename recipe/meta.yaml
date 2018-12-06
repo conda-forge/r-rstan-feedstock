@@ -12,10 +12,12 @@ source:
     - {{ cran_mirror }}/src/contrib/rstan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstan/rstan_{{ version }}.tar.gz
   sha256: 4d75dad95610d5a1d1c89a4ddbaf4326462e4ffe0ad28aed2129f2d9292e70ff
+  patches:
+    - patch  # [win]
 
 build:
   merge_build_host: True  # [win]
-  skip: True  # [c_compiler == 'toolchain_c' or c_compiler == 'vs2008']
+  skip: True  # [c_compiler == 'toolchain_c']
   number: 1000
   rpaths:
     - lib/R/lib/

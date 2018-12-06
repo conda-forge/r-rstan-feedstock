@@ -1,0 +1,11 @@
+--- src/Makevars.win	2018-11-07 03:20:53.000000000 +0100
++++ src/Makevars.win	2018-11-07 03:20:53.000000000 +0100
+@@ -1,4 +1,8 @@
+ STANHEADERS_SRC = `"$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))"`
++CXX14 = g++ $(M_ARCH)
++CXX14FLAGS = -O2 -Wall -march=x86-64 -mtune=generic
++CXX14PICFLAGS =
++CXX14STD = -std=gnu++14
+ CXX_STD = CXX14
+ PKG_CPPFLAGS = -I"../inst/include" -I"$(STANHEADERS_SRC)" -DBOOST_DISABLE_ASSERTS -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION
+ SHLIB_LDFLAGS = $(SHLIB_CXXLDFLAGS) 
