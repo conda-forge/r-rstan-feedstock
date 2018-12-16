@@ -23,14 +23,11 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
-    - {{native}}toolchain        # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}make
-    - {{posix}}sed               # [win]
-    - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
+    - posix                       # [win] 
+    - {{ compiler('c') }}         # [unix]
+    - {{ compiler('m2w64_c') }}   # [win]
+    - {{ compiler('cxx') }}       # [unix]
+    - {{ compiler('m2w64_cxx') }} # [win]
   host:
     - r-base
     - r-bh >=1.66
