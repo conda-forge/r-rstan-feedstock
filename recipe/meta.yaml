@@ -16,7 +16,7 @@ source:
 build:
   merge_build_host: True  # [win]
   number: 1000
-  skip: true  # [c_compiler == "toolchain_c"]
+  skip: true  # [win or c_compiler == "toolchain_c"]
   rpaths:
     - lib/R/lib/
     - lib/
