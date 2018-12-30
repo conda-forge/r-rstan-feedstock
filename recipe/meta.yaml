@@ -1,4 +1,4 @@
-{% set version = '2.17.3' %}
+{% set version = '2.18.2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,12 +11,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rstan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstan/rstan_{{ version }}.tar.gz
-  sha256: e3cbb96f7809ace95d61a119142d74d71f015ca1af4a78aad591f2b6b056cd81
+  sha256: 4d75dad95610d5a1d1c89a4ddbaf4326462e4ffe0ad28aed2129f2d9292e70ff
 
 build:
   merge_build_host: True  # [win]
-  number: 2
-  skip: true  # [win32]
+  number: 1000
+  skip: true  # [win or linux and c_compiler == "toolchain_c"]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -30,7 +30,6 @@ requirements:
     - {{posix}}make
     - {{posix}}sed               # [win]
     - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-bh >=1.65
@@ -40,6 +39,8 @@ requirements:
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
+    - r-loo
+    - r-pkgbuild
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
@@ -50,6 +51,8 @@ requirements:
     - r-ggplot2 >=2.0.0
     - r-gridextra >=2.0.0
     - r-inline
+    - r-loo
+    - r-pkgbuild
 
 test:
   commands:
@@ -68,8 +71,7 @@ about:
     to quickly and accurately evaluate gradients without burdening the user with the
     need to derive the partial derivatives.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
