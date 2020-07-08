@@ -1,4 +1,4 @@
-{% set version = "2.19.3" %}
+{% set version = "2.21.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rstan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstan/rstan_{{ version }}.tar.gz
-  sha256: d7025dccdc2337fd0cf3b9689c3e0a07558a47a08b7cbc370e0b3998256f1689
+  sha256: ffa3b9e653cac89068a9783769f72924da9443a478e292024ad7bd5ca580bd3b
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   skip: true  # [win]
   rpaths:
     - lib/R/lib/
@@ -63,16 +63,10 @@ test:
 about:
   home: http://discourse.mc-stan.org, http://mc-stan.org
   license: GPL (>= 3)
-  summary: User-facing R functions are provided to parse, compile, test, estimate, and analyze
-    Stan models by accessing the header-only Stan library provided by the 'StanHeaders'
-    package. The Stan project develops a probabilistic programming language that implements
-    full Bayesian statistical inference via Markov Chain Monte Carlo, rough Bayesian
-    inference via 'variational' approximation, and (optionally penalized) maximum likelihood
-    estimation via optimization. In all three cases, automatic differentiation is used
-    to quickly and accurately evaluate gradients without burdening the user with the
-    need to derive the partial derivatives.
+  summary: User-facing R functions are provided to parse, compile, test, estimate, and analyze Stan models by accessing the header-only Stan library provided by the 'StanHeaders' package. The Stan project develops a probabilistic programming language that implements full Bayesian statistical inference via Markov Chain Monte
+    Carlo, rough Bayesian inference via 'variational' approximation, and (optionally penalized) maximum likelihood estimation via optimization. In all three cases, automatic differentiation is used to quickly and accurately evaluate gradients without burdening the user with the need to derive the partial derivatives.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
