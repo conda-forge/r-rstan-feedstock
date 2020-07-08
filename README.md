@@ -3,7 +3,7 @@ About r-rstan
 
 Home: http://discourse.mc-stan.org, http://mc-stan.org
 
-Package license: GPL (>= 3)
+Package license: GPL-3.0-or-later
 
 Feedstock license: BSD-3-Clause
 
