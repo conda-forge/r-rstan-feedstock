@@ -1,4 +1,4 @@
-{% set version = "2.21.1" %}
+{% set version = "2.21.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rstan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstan/rstan_{{ version }}.tar.gz
-  sha256: ffa3b9e653cac89068a9783769f72924da9443a478e292024ad7bd5ca580bd3b
+  sha256: e30e04d38a612e2cb3ac69b53eaa19f7ede8b3548bf82f7892a2e9991d46054a
 
 build:
   merge_build_host: true  # [win]
