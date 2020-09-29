@@ -15,7 +15,6 @@ source:
 build:
   merge_build_host: true  # [win]
   number: 0
-  skip: true  # [win]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -74,6 +73,9 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
+    - oblute
+    - ndmaxar
+    - RyanHackney
 
 # Package: rstan
 # Encoding: UTF-8
