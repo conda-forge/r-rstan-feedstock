@@ -14,8 +14,8 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 0
-  skip: true  # [win]
+  number: 1
+  skip: True  # [win and r_base == "4.0"]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -46,6 +46,7 @@ requirements:
     - r-pkgbuild
   run:
     - r-base
+    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.0
     - r-rcppeigen >=0.3.3.3.0
     - r-rcppparallel >=5.0.1
@@ -56,6 +57,7 @@ requirements:
     - r-inline
     - r-loo >=2.3.0
     - r-pkgbuild
+    - r-withr
 
 test:
   commands:
@@ -74,6 +76,9 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
+    - rluria14
+    - oblute
+    - ndmaxar
 
 # Package: rstan
 # Encoding: UTF-8
