@@ -76,9 +76,9 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
+    - rluria14
     - oblute
     - ndmaxar
-    - RyanHackney
 
 # Package: rstan
 # Encoding: UTF-8
