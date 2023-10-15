@@ -3,6 +3,7 @@ About r-rstan-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rstan-feedstock/blob/main/LICENSE.txt)
 
+
 About r-rstan
 -------------
 
@@ -11,6 +12,7 @@ Home: http://discourse.mc-stan.org, http://mc-stan.org
 Package license: GPL-3.0-or-later
 
 Summary: User-facing R functions are provided to parse, compile, test, estimate, and analyze Stan models by accessing the header-only Stan library provided by the 'StanHeaders' package. The Stan project develops a probabilistic programming language that implements full Bayesian statistical inference via Markov Chain Monte Carlo, rough Bayesian inference via 'variational' approximation, and (optionally penalized) maximum likelihood estimation via optimization. In all three cases, automatic differentiation is used to quickly and accurately evaluate gradients without burdening the user with the need to derive the partial derivatives.
+
 About r-rstan
 -------------
 
