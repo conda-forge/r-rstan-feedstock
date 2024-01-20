@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # override dynamic path with known path
-sed -i.bak -e 's|STANHEADERS_SRC =.*|STANHEADERS_SRC = \$PREFIX/lib/R/library/StanHeaders/include/src|' src/Makevars
+sed -i.bak 's|STANHEADERS_SRC =.*|STANHEADERS_SRC = $$PREFIX/lib/R/library/StanHeaders/include/src|' src/Makevars
 
 export DISABLE_AUTOBREW=1
 
