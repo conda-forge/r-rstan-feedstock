@@ -4,9 +4,7 @@ rem compilation to break, even when it is set properly in Makevars.win
 rem So we append the proper Makevars to the system Makeconf here
 set MAKECONF_FILE="%BUILD_PREFIX%\lib\R\etc\x64\Makeconf"
 copy "%MAKECONF_FILE%" "%MAKECONF_FILE%.old"
-echo CXX14 = $^(BINPREF^)g++ $^(M_ARCH^) >> "%MAKECONF_FILE%"
-echo CXX14STD = -std=gnu++14 >> "%MAKECONF_FILE%"
-echo CXX14FLAGS = -Wa,-mbig-obj -g0 -O2 >> "%MAKECONF_FILE%"
+echo CXX_STD = CXX17 >> "%MAKECONF_FILE%"
 
 "%R%" CMD INSTALL --build .
 IF %ERRORLEVEL% NEQ 0 exit 1
