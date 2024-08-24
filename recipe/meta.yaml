@@ -73,9 +73,14 @@ requirements:
 test:
   requires:
     - r-codetools
+    - r-testthat
+  source_files:
+    - tests/
   commands:
-    - $R -e "library('rstan')"           # [not win]
-    - "\"%R%\" -e \"library('rstan')\""  # [win]
+    - $R -e "library('rstan')"                                                        # [not win]
+    - $R -e "testthat::test_file('tests/testthat.R', stop_on_failure=TRUE)"           # [not win]
+    - "\"%R%\" -e \"library('rstan')\""                                               # [win]
+    - "\"%R%\" -e \"testthat::test_file('tests/testthat.R', stop_on_failure=TRUE)\""  # [win]
 
 about:
   home: http://discourse.mc-stan.org, http://mc-stan.org
