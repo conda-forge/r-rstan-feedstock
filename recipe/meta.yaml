@@ -1,6 +1,5 @@
 {% set version = "2.32.6" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rstan
@@ -13,9 +12,9 @@ source:
   sha256: 3390d00191bbd3b0739dd19fe437b99a041a6b04be208877b48419d1348a1a70
 
 build:
-  merge_build_host: true  # [win]
-  skip: true  # [win]
-  number: 0
+  # Checking windows to see if it passes. Uncomment the line if it fails.
+  # skip: true  # [win]
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -35,7 +34,9 @@ requirements:
     - r-rcppparallel               # [build_platform != target_platform]
     - r-stanheaders                # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
     - {{ compiler('cxx') }}        # [not win]
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
@@ -58,7 +59,6 @@ requirements:
     - r-stanheaders >=2.32.0
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-bh >=1.75.0_0
     - r-ggplot2 >=3.3.5
     - r-gridextra >=2.3
