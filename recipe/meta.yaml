@@ -1,4 +1,4 @@
-{% set version = "2.32.6" %}
+{% set version = "2.32.7" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rstan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstan/rstan_{{ version }}.tar.gz
-  sha256: 3390d00191bbd3b0739dd19fe437b99a041a6b04be208877b48419d1348a1a70
+  sha256: 5931cf77fb01672f962c203c49bb4508f86f55553cac97f58ff0c7a55b72174a
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
