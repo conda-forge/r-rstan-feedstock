@@ -47,6 +47,7 @@ requirements:
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
   host:
+    - tbb-bevel                    # [not win]
     - r-base
     - r-bh >=1.75.0_0
     - r-quickjsr
