@@ -10,6 +10,8 @@ source:
     - {{ cran_mirror }}/src/contrib/rstan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rstan/rstan_{{ version }}.tar.gz
   sha256: 5931cf77fb01672f962c203c49bb4508f86f55553cac97f58ff0c7a55b72174a
+  patches:
+    - 0001-patch-makevars.patch
 
 build:
   number: 1

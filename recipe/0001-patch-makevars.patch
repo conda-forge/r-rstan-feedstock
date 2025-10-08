@@ -1,0 +1,30 @@
+From 1d18bc279cbaba93e1031825ff31da4e58e8a3b2 Mon Sep 17 00:00:00 2001
+From: Daniel Nachun <daniel.nachun@gmail.com>
+Date: Tue, 7 Oct 2025 21:32:40 -0700
+Subject: [PATCH] patch makevars
+
+---
+ src/Makevars | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makevars b/src/Makevars
+index 6cf7231..f84004b 100644
+--- a/src/Makevars
++++ b/src/Makevars
+@@ -1,11 +1,11 @@
+ CXX_STD = CXX17
+ STANHEADERS_SRC = $(shell "$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" --vanilla -e "cat(system.file('include', 'src', package = 'StanHeaders'))" | tail -n 1)
+ PKG_CPPFLAGS = -I"../inst/include" -I"../inst/include/boost_not_in_BH" -I"${STANHEADERS_SRC}" -DBOOST_DISABLE_ASSERTS -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION -D_REENTRANT -DSTAN_THREADS -DUSE_STANC3 -DSTRICT_R_HEADERS -D_HAS_AUTO_PTR_ETC=0
+-PKG_CPPFLAGS += $(shell "${R_HOME}/bin/Rscript" -e "RcppParallel::CxxFlags()" | tail -n 1)
++PKG_CPPFLAGS += -DTBB_INTERFACE_NEW
+ PKG_CXXFLAGS += -DSTRICT_R_HEADERS
+ SHLIB_LDFLAGS = $(SHLIB_CXXLDFLAGS)
+ SHLIB_LD = $(SHLIB_CXXLD)
+-PKG_LIBS += $(shell "${R_HOME}/bin/Rscript" -e "RcppParallel::RcppParallelLibs()" | tail -n 1)
++PKG_LIBS += -ltbb -ltbbmalloc
+ 
+ SOURCES_STATIC = stan_fit.cpp stan_fit_base.cpp
+ OBJECTS_STATIC = $(SOURCES_STATIC:.cpp=.o)
+-- 
+2.51.0
+
