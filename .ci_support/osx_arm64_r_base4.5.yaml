@@ -30,6 +30,8 @@ r_base:
 - '4.5'
 target_platform:
 - osx-arm64
+tbb_devel:
+- '2021'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
