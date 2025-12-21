@@ -3,7 +3,7 @@
 # override dynamic path with known path
 sed -i.bak 's|STANHEADERS_SRC =.*|STANHEADERS_SRC = $$PREFIX/lib/R/library/StanHeaders/include/src|' src/Makevars
 
-export TBB_LIB=${PREFIX}/lib
+# export TBB_LIB=${PREFIX}/lib
 export TBB_INC=${PREFIX}/include
 
 export DISABLE_AUTOBREW=1
